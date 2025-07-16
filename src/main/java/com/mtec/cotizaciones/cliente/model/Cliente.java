@@ -1,5 +1,6 @@
-package com.mtec.cotizaciones.model;
+package com.mtec.cotizaciones.cliente.model;
 
+import com.mtec.cotizaciones.cotizacion.model.Cotizacion;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

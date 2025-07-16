@@ -1,7 +1,7 @@
-package com.mtec.cotizaciones.repository;
+package com.mtec.cotizaciones.cotizacion.repository;
 
-import com.mtec.cotizaciones.model.Cotizacion;
-import com.mtec.cotizaciones.model.EstadoCotizacion;
+import com.mtec.cotizaciones.cotizacion.model.Cotizacion;
+import com.mtec.cotizaciones.cotizacion.model.EstadoCotizacion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

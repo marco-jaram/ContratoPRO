@@ -1,12 +1,12 @@
-package com.mtec.cotizaciones.service;
+package com.mtec.cotizaciones.common;
 
 
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import com.mtec.cotizaciones.model.ConceptoPresupuesto;
-import com.mtec.cotizaciones.model.Cotizacion;
+import com.mtec.cotizaciones.cotizacion.model.ConceptoPresupuesto;
+import com.mtec.cotizaciones.cotizacion.model.Cotizacion;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;

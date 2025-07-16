@@ -1,6 +1,6 @@
-package com.mtec.cotizaciones.repository;
+package com.mtec.cotizaciones.cliente.repository;
 
-import com.mtec.cotizaciones.model.Cliente;
+import com.mtec.cotizaciones.cliente.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

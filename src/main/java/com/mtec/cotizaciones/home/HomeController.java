@@ -1,6 +1,6 @@
-package com.mtec.cotizaciones.controller;
+package com.mtec.cotizaciones.home;
 
-import com.mtec.cotizaciones.service.CotizacionService;
+import com.mtec.cotizaciones.cotizacion.service.CotizacionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

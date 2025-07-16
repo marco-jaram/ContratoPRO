@@ -1,9 +1,9 @@
-package com.mtec.cotizaciones.controller;
+package com.mtec.cotizaciones.cliente.controller;
 
 
 
-import com.mtec.cotizaciones.model.Cliente;
-import com.mtec.cotizaciones.service.ClienteService;
+import com.mtec.cotizaciones.cliente.model.Cliente;
+import com.mtec.cotizaciones.cliente.service.ClienteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
-package com.mtec.cotizaciones.service;
+package com.mtec.cotizaciones.plantilla.service;
 
-import com.mtec.cotizaciones.model.Plantilla;
-import com.mtec.cotizaciones.repository.PlantillaRepository;
+import com.mtec.cotizaciones.plantilla.model.Plantilla;
+import com.mtec.cotizaciones.plantilla.repository.PlantillaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

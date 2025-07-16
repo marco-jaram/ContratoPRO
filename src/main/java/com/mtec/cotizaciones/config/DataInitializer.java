@@ -1,9 +1,9 @@
 package com.mtec.cotizaciones.config;
 
-import com.mtec.cotizaciones.model.Cliente;
-import com.mtec.cotizaciones.model.Plantilla;
-import com.mtec.cotizaciones.service.ClienteService;
-import com.mtec.cotizaciones.service.PlantillaService;
+import com.mtec.cotizaciones.cliente.model.Cliente;
+import com.mtec.cotizaciones.plantilla.model.Plantilla;
+import com.mtec.cotizaciones.cliente.service.ClienteService;
+import com.mtec.cotizaciones.plantilla.service.PlantillaService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

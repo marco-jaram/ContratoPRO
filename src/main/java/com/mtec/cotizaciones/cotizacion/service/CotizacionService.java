@@ -1,9 +1,9 @@
-package com.mtec.cotizaciones.service;
+package com.mtec.cotizaciones.cotizacion.service;
 
-import com.mtec.cotizaciones.model.ConceptoPresupuesto;
-import com.mtec.cotizaciones.model.Cotizacion;
-import com.mtec.cotizaciones.repository.ClienteRepository;
-import com.mtec.cotizaciones.repository.CotizacionRepository;
+import com.mtec.cotizaciones.cotizacion.model.ConceptoPresupuesto;
+import com.mtec.cotizaciones.cotizacion.model.Cotizacion;
+import com.mtec.cotizaciones.cliente.repository.ClienteRepository;
+import com.mtec.cotizaciones.cotizacion.repository.CotizacionRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

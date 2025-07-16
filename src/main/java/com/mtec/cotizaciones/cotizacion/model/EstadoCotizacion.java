@@ -1,4 +1,4 @@
-package com.mtec.cotizaciones.model;
+package com.mtec.cotizaciones.cotizacion.model;
 
 public enum EstadoCotizacion {
     BORRADOR,

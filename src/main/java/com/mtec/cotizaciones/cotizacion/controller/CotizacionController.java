@@ -1,11 +1,11 @@
-package com.mtec.cotizaciones.controller;
+package com.mtec.cotizaciones.cotizacion.controller;
 
 import com.lowagie.text.DocumentException;
-import com.mtec.cotizaciones.model.Cotizacion;
-import com.mtec.cotizaciones.service.ClienteService;
-import com.mtec.cotizaciones.service.CotizacionService;
-import com.mtec.cotizaciones.service.PdfService;
-import com.mtec.cotizaciones.service.PlantillaService;
+import com.mtec.cotizaciones.cotizacion.model.Cotizacion;
+import com.mtec.cotizaciones.cliente.service.ClienteService;
+import com.mtec.cotizaciones.cotizacion.service.CotizacionService;
+import com.mtec.cotizaciones.common.PdfService;
+import com.mtec.cotizaciones.plantilla.service.PlantillaService;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -15,8 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-import com.mtec.cotizaciones.model.Caracteristica;
-import com.mtec.cotizaciones.model.ConceptoPresupuesto;
+import com.mtec.cotizaciones.cotizacion.model.Caracteristica;
+import com.mtec.cotizaciones.cotizacion.model.ConceptoPresupuesto;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.mtec.cotizaciones.model;
+package com.mtec.cotizaciones.plantilla.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
