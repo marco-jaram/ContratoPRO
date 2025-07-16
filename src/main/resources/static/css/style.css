@@ -1,0 +1,120 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+.header-container {
+    max-width: 960px; /* Mismo ancho que el .container */
+    margin: 0 auto;    /* Centrado */
+    padding: 0 20px;  /* Mismo padding horizontal que el .container para alinear el texto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ header h1 {
+     margin: 0;
+     font-size: 1.5em;
+ }
+
+ header nav a {
+     color: #fff;
+     text-decoration: none;
+     margin-left: 15px;
+ }
+
+ header nav a:hover {
+     text-decoration: underline;
+ }
+
+ h1, h2, h3 {
+     color: #333;
+ }
+
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: 20px;
+ }
+
+ th, td {
+     border: 1px solid #dee2e6;
+     padding: 12px;
+     text-align: left;
+ }
+
+ th {
+     background-color: #f2f2f2;
+ }
+
+ .actions a, .button, button {
+     display: inline-block;
+     padding: 8px 12px;
+     margin-right: 5px;
+     background-color: #007bff;
+     color: white;
+     text-decoration: none;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+ }
+
+ .button-edit { background-color: #ffc107; }
+ .button-delete { background-color: #dc3545; }
+ .button-new { background-color: #28a745; margin-bottom: 20px; }
+
+ form div {
+     margin-bottom: 15px;
+ }
+
+ label {
+     display: block;
+     font-weight: bold;
+     margin-bottom: 5px;
+ }
+
+ input[type="text"],
+ input[type="email"],
+ input[type="date"],
+ input[type="number"],
+ select,
+ textarea {
+     width: 100%;
+     padding: 10px;
+     border: 1px solid #ced4da;
+     border-radius: 4px;
+     box-sizing: border-box; /* Importante para que el padding no afecte el width */
+ }
+
+ textarea {
+     resize: vertical;
+     min-height: 100px;
+ }
+
+ .preview-section {
+     margin-bottom: 25px;
+     padding-bottom: 15px;
+     border-bottom: 1px solid #eee;
+ }
+ .preview-section h2 {
+     border-bottom: 2px solid #007bff;
+     padding-bottom: 5px;
+     color: #0056b3;
+ }

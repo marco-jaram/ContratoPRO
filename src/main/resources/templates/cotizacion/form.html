@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: head(pageTitle=${cotizacion.id == null ? 'Nueva Cotización' : 'Editar Cotización'})}"></head>
+
+<body>
+
+<header th:replace="~{fragments/header :: navbar}"></header>
+
+<div class="container">
+    <h2 th:text="${cotizacion.id == null ? 'Crear Nueva Cotización' : 'Editar Cotización'}">Formulario de Cotización</h2>
+
+    <form th:action="@{/cotizaciones}" th:object="${cotizacion}" method="post" id="cotizacionForm">
+        <input type="hidden" th:if="${cotizacion.id != null}" th:field="*{id}" />
+
+        <!-- Campos de Cliente y Desarrollador (sin cambios) -->
+        <h3>Información del Cliente y Desarrollador</h3>
+        <div>
+            <label for="cliente">Cliente:</label>
+            <select id="cliente" th:field="*{cliente}" required>
+                <option value="">Seleccione un cliente</option>
+                <option th:each="cli : ${clientes}" th:value="${cli.id}" th:text="${cli.nombre + ' (' + cli.empresa + ')'}"></option>
+            </select>
+            <div style="margin-top: 10px;">
+                <a th:href="@{/clientes/nuevo}" target="_blank" class="button" style="background-color: #17a2b8; font-size: 0.9em;">Añadir nuevo cliente</a>
+            </div>
+        </div>
+        <div>
+            <label for="desarrollador">Desarrollador:</label>
+            <input type="text" id="desarrollador" th:field="*{desarrollador}" placeholder="Nombre del desarrollador">
+        </div>
+
+        <!-- Detalles del Proyecto (sin cambios) -->
+        <h3>Detalles del Proyecto</h3>
+        <div>
+            <label for="objetivo">Objetivo del proyecto:</label>
+            <textarea id="objetivo" th:field="*{objetivo}" required></textarea>
+        </div>
+        <div>
+            <label for="fechaInicio">Fecha de Inicio:</label>
+            <input type="date" id="fechaInicio" th:field="*{fechaInicio}">
+        </div>
+        <div>
+            <label for="fechaFin">Fecha de Fin:</label>
+            <input type="date" id="fechaFin" th:field="*{fechaFin}">
+        </div>
+
+
+        <!-- SECCIÓN DE CARACTERÍSTICAS (NUEVA Y DINÁMICA) -->
+        <h3>Características del Desarrollo</h3>
+        <table id="caracteristicasTable">
+            <thead>
+            <tr>
+                <th>Descripción</th>
+                <th style="width: 10%;">Acción</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Thymeleaf generará filas existentes al editar -->
+            <tr th:each="car, iterStat : *{caracteristicas}">
+                <td>
+                    <input type="hidden" th:field="*{caracteristicas[__${iterStat.index}__].id}" />
+                    <input type="text" th:field="*{caracteristicas[__${iterStat.index}__].descripcion}" class="form-control" required placeholder="Ej: Diseño responsivo"/>
+                </td>
+                <td>
+                    <button type="button" class="button button-delete" onclick="removeRow(this)">Quitar</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="button" id="addCaracteristica" class="button" style="background-color: #17a2b8; margin-top:10px;">Añadir Característica</button>
+
+
+        <!-- SECCIÓN DE PRESUPUESTO (NUEVA Y DINÁMICA) -->
+        <h3 style="margin-top: 20px;">Presupuesto</h3>
+        <table id="conceptosTable">
+            <thead>
+            <tr>
+                <th>Concepto</th>
+                <th style="width: 25%;">Monto</th>
+                <th style="width: 10%;">Acción</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Thymeleaf generará filas existentes al editar -->
+            <tr th:each="con, iterStat : *{conceptosPresupuesto}">
+                <td>
+                    <input type="hidden" th:field="*{conceptosPresupuesto[__${iterStat.index}__].id}" />
+                    <input type="text" th:field="*{conceptosPresupuesto[__${iterStat.index}__].concepto}" class="form-control" required placeholder="Ej: Diseño de base de datos"/>
+                </td>
+                <td>
+                    <input type="number" th:field="*{conceptosPresupuesto[__${iterStat.index}__].monto}" class="form-control monto-input" required step="0.01" placeholder="0.00"/>
+                </td>
+                <td>
+                    <button type="button" class="button button-delete" onclick="removeRow(this)">Quitar</button>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td style="text-align: right; font-weight: bold;">TOTAL:</td>
+                <td style="font-weight: bold;" id="totalAmount">$0.00</td>
+                <td></td>
+            </tr>
+            </tfoot>
+        </table>
+        <button type="button" id="addConcepto" class="button" style="background-color: #17a2b8; margin-top:10px;">Añadir Concepto</button>
+
+
+        <!-- Términos y Condiciones (sin cambios) -->
+        <h3 style="margin-top: 20px;">Términos y Condiciones</h3>
+        <div>
+            <label for="formaPago">Forma de Pago:</label>
+            <input type="text" id="formaPago" th:field="*{formaPago}" placeholder="Ej: 50% anticipo, 50% contra entrega">
+        </div>
+        <div>
+            <label for="diasEntrega">Días de Entrega (hábiles):</label>
+            <input type="number" id="diasEntrega" th:field="*{diasEntrega}">
+        </div>
+        <div>
+            <label for="estado">Estado de la cotización:</label>
+            <select id="estado" th:field="*{estado}">
+                <option th:each="e : ${T(com.mtec.cotizaciones.model.EstadoCotizacion).values()}" th:value="${e}" th:text="${e}"></option>
+            </select>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <button type="submit" class="button">Guardar Cotización</button>
+            <a th:href="@{/cotizaciones}" class="button" style="background-color: #6c757d;">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<!-- Fragmento del pie de página -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- SCRIPT DE JAVASCRIPT PARA FORMULARIO DINÁMICO -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let carIndex = document.querySelectorAll('#caracteristicasTable tbody tr').length;
+        let conIndex = document.querySelectorAll('#conceptosTable tbody tr').length;
+
+        document.getElementById('addCaracteristica').addEventListener('click', function() {
+            const tableBody = document.querySelector('#caracteristicasTable tbody');
+            const newRow = tableBody.insertRow();
+            newRow.innerHTML = `
+                <td>
+                    <input type="text" name="caracteristicas[${carIndex}].descripcion" class="form-control" required placeholder="Nueva característica"/>
+                </td>
+                <td>
+                    <button type="button" class="button button-delete" onclick="removeRow(this)">Quitar</button>
+                </td>
+            `;
+            carIndex++;
+        });
+
+        document.getElementById('addConcepto').addEventListener('click', function() {
+            const tableBody = document.querySelector('#conceptosTable tbody');
+            const newRow = tableBody.insertRow();
+            newRow.innerHTML = `
+                <td>
+                    <input type="text" name="conceptosPresupuesto[${conIndex}].concepto" class="form-control" required placeholder="Nuevo concepto"/>
+                </td>
+                <td>
+                    <input type="number" name="conceptosPresupuesto[${conIndex}].monto" class="form-control monto-input" required step="0.01" placeholder="0.00"/>
+                </td>
+                <td>
+                    <button type="button" class="button button-delete" onclick="removeRow(this)">Quitar</button>
+                </td>
+            `;
+            conIndex++;
+            updateTotal(); // Re-attach listeners to new inputs
+        });
+
+        // Función global para quitar filas
+        window.removeRow = function(button) {
+            button.closest('tr').remove();
+            updateTotal();
+        }
+
+        // Función para calcular y actualizar el total
+        window.updateTotal = function() {
+            let total = 0;
+            document.querySelectorAll('.monto-input').forEach(input => {
+                total += parseFloat(input.value) || 0;
+                // Re-attach listener in case it was lost
+                input.removeEventListener('input', updateTotal);
+                input.addEventListener('input', updateTotal);
+            });
+            document.getElementById('totalAmount').textContent = '$' + total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }
+
+        // Calcular total inicial al cargar la página
+        updateTotal();
+    });
+</script>
+
+</body>
+</html>

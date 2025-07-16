@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: head(pageTitle='Gestión de Clientes')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/header :: navbar}"></header>
+
+<div class="container">
+    <h2>Gestión de Clientes</h2>
+
+    <a th:href="@{/clientes/nuevo}" class="button button-new">Nuevo Cliente</a>
+
+    <table th:if="${not clientes.isEmpty()}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Empresa</th>
+            <th>Email</th>
+            <th>Contacto</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cli : ${clientes}">
+            <td th:text="${cli.id}">1</td>
+            <td th:text="${cli.nombre}">Nombre Completo</td>
+            <td th:text="${cli.empresa}">Nombre de la Empresa</td>
+            <td th:text="${cli.email}">correo@ejemplo.com</td>
+            <td th:text="${cli.contacto}">555-1234</td>
+            <td class="actions">
+                <a th:href="@{/clientes/{id}/editar(id=${cli.id})}" class="button button-edit">Editar</a>
+                <form th:action="@{/clientes/{id}/delete(id=${cli.id})}" method="post" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este cliente? Esto podría afectar cotizaciones existentes.');">
+                    <button type="submit" class="button button-delete">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:if="${clientes.isEmpty()}">
+        <p>No hay clientes registrados. ¡Crea el primero!</p>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>

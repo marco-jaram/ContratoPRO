@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: head(pageTitle='Inicio')}"></head>
+
+<body>
+
+<header th:replace="~{fragments/header :: navbar}"></header>
+
+
+<div class="container">
+
+<h2>Dashboard Principal</h2>
+<p>Bienvenido al sistema de gestión de cotizaciones.</p>
+
+<a th:href="@{/cotizaciones/nueva}" class="button button-new">Crear Nueva Cotización</a>
+
+<h3>Últimas Cotizaciones</h3>
+
+<div th:if="${cotizaciones.isEmpty()}">
+    <p>Aún no hay cotizaciones creadas.</p>
+</div>
+
+<table th:unless="${cotizaciones.isEmpty()}">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Total</th>
+        <th>Estado</th>
+        <th>Fecha Creación</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cot : ${cotizaciones}">
+        <td th:text="${cot.id}">1</td>
+        <td th:text="${cot.cliente?.nombre}">Nombre Cliente</td>
+        <td th:text="${#numbers.formatCurrency(cot.total)}">$1,000.00</td>
+        <td th:text="${cot.estado}">BORRADOR</td>
+        <td th:text="${#temporals.format(cot.fechaCreacion, 'dd/MM/yyyy HH:mm')}">01/01/2023</td>
+        <td class="actions">
+            <a th:href="@{/cotizaciones/{id}(id=${cot.id})}" class="button">Ver</a>
+            <a th:href="@{/cotizaciones/{id}/editar(id=${cot.id})}" class="button button-edit">Editar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Fragmento para la cabecera del documento HTML (no cambia) -->
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle} ?: 'Sistema de Cotizaciones'">Sistema de Cotizaciones</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<!-- Fragmento para la barra de navegación (MODIFICADO) -->
+<header th:fragment="navbar">
+    <!-- Este div centrará y alineará el contenido del header -->
+    <div class="header-container">
+        <h1><a th:href="@{/}" style="color:white; text-decoration: none;">Cotizaciones MTEC</a></h1>
+        <nav>
+            <a th:href="@{/}">Inicio</a>
+            <a th:href="@{/cotizaciones}">Cotizaciones</a>
+            <a th:href="@{/clientes}">Clientes</a>
+        </nav>
+    </div>
+</header>
+
+</html>

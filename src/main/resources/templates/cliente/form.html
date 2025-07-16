@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/header :: head(pageTitle=${cliente.id == null ? 'Nuevo Cliente' : 'Editar Cliente'})}"></head>
+
+<body>
+
+<header th:replace="~{fragments/header :: navbar}"></header>
+
+<div class="container">
+    <h2 th:text="${cliente.id == null ? 'Crear Nuevo Cliente' : 'Editar Cliente'}">Formulario de Cliente</h2>
+
+    <form th:action="@{/clientes}" th:object="${cliente}" method="post">
+        <input type="hidden" th:if="${cliente.id != null}" th:field="*{id}" />
+
+        <div>
+            <label for="nombre">Nombre Completo:</label>
+            <input type="text" id="nombre" th:field="*{nombre}" required placeholder="Ej: Juan Pérez">
+        </div>
+        <div>
+            <label for="empresa">Empresa:</label>
+            <input type="text" id="empresa" th:field="*{empresa}" required placeholder="Ej: Soluciones Tech S.A. de C.V.">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" th:field="*{email}" placeholder="Ej: contacto@empresa.com">
+        </div>
+        <div>
+            <label for="contacto">Teléfono / Contacto:</label>
+            <input type="text" id="contacto" th:field="*{contacto}" placeholder="Ej: 55 1234 5678">
+        </div>
+
+        <div>
+            <button type="submit" class="button">Guardar Cliente</button>
+            <a th:href="@{/clientes}" class="button" style="background-color: #6c757d;">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>

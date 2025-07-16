@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="footer">
+</div> <!-- Cierra el .container del header -->
+
+<footer style="text-align: center; padding: 20px; margin-top: 20px; background-color: #f2f2f2; color: #666;">
+    <p>© <span th:text="${#dates.year(#dates.createNow())}"></span> Marco Jaramillo. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
