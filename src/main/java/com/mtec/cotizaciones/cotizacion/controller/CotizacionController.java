@@ -75,6 +75,7 @@ public class CotizacionController {
         if (cotizacion.isPresent()) {
             model.addAttribute("cotizacion", cotizacion.get());
             model.addAttribute("clientes", clienteService.findAll());
+            model.addAttribute("plantillas", plantillaService.findAll());
             return "cotizacion/form";
         }
         return "redirect:/cotizaciones";

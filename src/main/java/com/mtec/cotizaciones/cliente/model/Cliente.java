@@ -20,7 +20,7 @@ public class Cliente {
     private Long id;
     private String nombre;
     private String empresa;
-    private String contacto;
+    private String telefono;
     private String email;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)

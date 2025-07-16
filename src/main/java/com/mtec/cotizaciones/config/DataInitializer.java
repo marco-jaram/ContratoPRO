@@ -27,7 +27,7 @@ public class DataInitializer implements CommandLineRunner {
             Cliente cliente = new Cliente();
             cliente.setNombre("Abdiel Ortega");
             cliente.setEmpresa("La Linea");
-            cliente.setContacto("664 188 8387");
+            cliente.setTelefono("664 188 8387");
             clienteService.save(cliente);
 
             Plantilla plantilla = new Plantilla();

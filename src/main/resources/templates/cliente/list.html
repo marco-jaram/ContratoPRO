@@ -29,10 +29,10 @@
             <td th:text="${cli.nombre}">Nombre Completo</td>
             <td th:text="${cli.empresa}">Nombre de la Empresa</td>
             <td th:text="${cli.email}">correo@ejemplo.com</td>
-            <td th:text="${cli.contacto}">555-1234</td>
+            <td th:text="${cli.telefono}">555-1234</td>
             <td class="actions">
                 <a th:href="@{/clientes/{id}/editar(id=${cli.id})}" class="button button-edit">Editar</a>
-                <form th:action="@{/clientes/{id}/delete(id=${cli.id})}" method="post" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este cliente? Esto podría afectar cotizaciones existentes.');">
+                <form th:action="@{/clientes/{id}(id=${cli.id})}" th:method="delete" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este cliente? Esto podría afectar cotizaciones existentes.');">
                     <button type="submit" class="button button-delete">Eliminar</button>
                 </form>
             </td>

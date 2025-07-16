@@ -48,9 +48,8 @@ public class ClienteController {
         return "redirect:/clientes";
     }
 
-    @PostMapping("/{id}/delete")
+    @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id) {
-        // Asegúrate de que no haya cotizaciones asociadas antes de borrar, o maneja la lógica de borrado en cascada
         clienteService.deleteById(id);
         return "redirect:/clientes";
     }

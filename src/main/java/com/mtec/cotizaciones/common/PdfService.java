@@ -45,7 +45,7 @@ public class PdfService {
         PdfPCell developerCell = new PdfPCell();
         developerCell.setBorder(Rectangle.NO_BORDER);
         developerCell.addElement(new Paragraph("DE:", headerFont));
-        developerCell.addElement(new Paragraph("Cotizaciones MTEC", boldFont));
+        developerCell.addElement(new Paragraph("Marco Jaramillo", boldFont));
         developerCell.addElement(new Paragraph("hola@weblocalmx.com"));
         developerCell.addElement(new Paragraph("664 311 15 77"));
 
@@ -56,6 +56,7 @@ public class PdfService {
             clientCell.addElement(new Paragraph(cotizacion.getCliente().getNombre(), boldFont));
             clientCell.addElement(new Paragraph(cotizacion.getCliente().getEmpresa()));
             clientCell.addElement(new Paragraph(cotizacion.getCliente().getEmail()));
+            clientCell.addElement(new Paragraph(cotizacion.getCliente().getTelefono()));
         } else {
             clientCell.addElement(new Paragraph("Cliente no especificado", normalFont));
         }

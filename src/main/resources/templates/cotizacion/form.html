@@ -120,8 +120,7 @@
         <div>
             <label for="estado">Estado de la cotización:</label>
             <select id="estado" th:field="*{estado}">
-                <option th:each="e : ${T(com.mtec.cotizaciones.model.EstadoCotizacion).values()}" th:value="${e}" th:text="${e}"></option>
-            </select>
+                <option th:each="e : ${T(com.mtec.cotizaciones.cotizacion.model.EstadoCotizacion).values()}" th:value="${e}" th:text="${e}"></option>            </select>
         </div>
 
         <div style="margin-top: 30px;">
